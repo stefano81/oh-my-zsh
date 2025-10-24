@@ -7,8 +7,7 @@ if [[ -f "$_ssh_configfile" ]]; then
   _ssh_hosts=($(
     grep -E '^Host.*' "$_ssh_configfile" |\
     awk '{for (i=2; i<=NF; i++) print $i}' |\
-    sort |\
-    uniq |\
+    sort -u |\
     grep -v '^*' |\
     sed -e 's/\.*\*$//'
   ))
